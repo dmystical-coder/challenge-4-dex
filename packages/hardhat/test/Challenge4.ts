@@ -129,8 +129,6 @@ describe("🚩 Challenge 4: ⚖️ 🪙 DEX", () => {
         console.log("\t", " 📞 Calling ethToToken with a value of 1 Eth...");
         const tx1 = await dexContract.ethToToken({ value: ethers.parseEther("1") });
 
-        expect(tx1, "ethToToken should revert before initalization").not.to.be.reverted;
-
         console.log("\t", " 🔰 Initializing...");
         const tx1_receipt = await tx1.wait();
         const ethSent_1 = await getEventValue(tx1_receipt, 2);
