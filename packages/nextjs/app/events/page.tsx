@@ -1,11 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import type { NextPage } from "next";
-import { formatEther } from "viem";
+import { formatEther, parseEther } from "viem";
 import { Address } from "~~/components/scaffold-eth";
-import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
+import { useScaffoldContract, useScaffoldEventHistory, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { notification } from "~~/utils/scaffold-eth";
 
 const Events: NextPage = () => {
+  const [approvalAmount, setApprovalAmount] = useState("");
+
+  const { data: dexContract } = useScaffoldContract({ contractName: "DEX" });
+
+  // Approval write function
+  const { writeContract: approveTokens, isPending } = useScaffoldWriteContract({
+    contractName: "Balloons",
+  });
+
+  // Event hooks for all DEX events
   const { data: EthToTokenEvents, isLoading: isEthToTokenEventsLoading } = useScaffoldEventHistory({
     contractName: "DEX",
     eventName: "EthToTokenSwap",
@@ -30,9 +42,111 @@ const Events: NextPage = () => {
     fromBlock: 0n,
   });
 
+  // Token approval events
+  const {
+    data: approvalEvents,
+    refetch: refetchApprovalEvents,
+    isLoading: isApprovalEventsLoading,
+  } = useScaffoldEventHistory({
+    contractName: "Balloons",
+    eventName: "Approval",
+    fromBlock: 0n,
+  });
+
+  // Handle token approval
+  const handleApprove = async () => {
+    if (!dexContract || !approvalAmount) {
+      notification.error("Please enter an amount to approve");
+      return;
+    }
+
+    try {
+      const dexAddress = dexContract.address;
+      const amountToApprove = parseEther(approvalAmount);
+
+      await approveTokens({
+        functionName: "approve",
+        args: [dexAddress, amountToApprove],
+      });
+
+      notification.success("You've approved the DEX to use your tokens");
+      setApprovalAmount("");
+      refetchApprovalEvents();
+    } catch (error) {
+      console.error("Error approving tokens:", error);
+      notification.error("Failed to approve tokens for the DEX");
+    }
+  };
+
   return (
     <>
       <div className="flex items-center flex-col flex-grow pt-10">
+        {/* Approval Section */}
+        <div className="mb-8 w-full max-w-[80%]">
+          <div className="text-center mb-4">
+            <span className="block text-2xl font-bold">Approve DEX to use your Balloons</span>
+          </div>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 mb-5">
+            <input
+              type="text"
+              placeholder="Amount to approve"
+              value={approvalAmount}
+              onChange={e => setApprovalAmount(e.target.value)}
+              className="input input-bordered w-full sm:w-[300px]"
+            />
+            <button onClick={handleApprove} disabled={isPending} className="btn btn-primary w-full sm:w-[200px]">
+              {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Approve Balloons"}
+            </button>
+          </div>
+
+          {isApprovalEventsLoading ? (
+            <div className="flex justify-center items-center mt-5">
+              <span className="loading loading-spinner loading-lg"></span>
+            </div>
+          ) : (
+            <div>
+              <div className="text-center mb-4">
+                <span className="block text-xl font-bold">Token Approval Events</span>
+              </div>
+              <div className="overflow-x-auto shadow-lg">
+                <table className="table table-zebra w-full">
+                  <thead>
+                    <tr>
+                      <th className="bg-primary">Owner</th>
+                      <th className="bg-primary">Spender</th>
+                      <th className="bg-primary">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {!approvalEvents || approvalEvents.length === 0 ? (
+                      <tr>
+                        <td colSpan={3} className="text-center">
+                          No approval events found
+                        </td>
+                      </tr>
+                    ) : (
+                      approvalEvents?.map((event, index) => {
+                        return (
+                          <tr key={index}>
+                            <td className="text-center">
+                              <Address address={event.args.owner} />
+                            </td>
+                            <td className="text-center">
+                              <Address address={event.args.spender} />
+                            </td>
+                            <td>{parseFloat(formatEther(event.args.value || 0n)).toFixed(4)}</td>
+                          </tr>
+                        );
+                      })
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ETH to Token Events - Existing code */}
         {isEthToTokenEventsLoading ? (
           <div className="flex justify-center items-center mt-10">
             <span className="loading loading-spinner loading-lg"></span>
