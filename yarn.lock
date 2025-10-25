@@ -2108,9 +2108,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nomicfoundation/hardhat-verify@npm:~2.0.10":
-  version: 2.0.13
-  resolution: "@nomicfoundation/hardhat-verify@npm:2.0.13"
+"@nomicfoundation/hardhat-verify@npm:~2.0.13":
+  version: 2.0.14
+  resolution: "@nomicfoundation/hardhat-verify@npm:2.0.14"
   dependencies:
     "@ethersproject/abi": ^5.1.2
     "@ethersproject/address": ^5.0.2
@@ -2122,8 +2122,8 @@ __metadata:
     table: ^6.8.0
     undici: ^5.14.0
   peerDependencies:
-    hardhat: ^2.0.4
-  checksum: 59a4d0f1fb93fcce91a4c318aaa69c8de6a857deb983e3976e9c20f09ce204f5a4e8a4e2ccae63018ee83ce5dbaa954b1f182a2c02e29d1a77f8673b03b498f9
+    hardhat: ^2.24.1
+  checksum: 8f194fce3400f6943d49cb34cf4919e4737f4d4637de49cf66b29cb32cc6f8a5a6fa00aa3e8dd0807a403212673fe62b9b1b6289a155d7c453bdc65d0358f40f
   languageName: node
   linkType: hard
 
@@ -2499,7 +2499,7 @@ __metadata:
     "@nomicfoundation/hardhat-chai-matchers": ~2.0.7
     "@nomicfoundation/hardhat-ethers": ~3.0.8
     "@nomicfoundation/hardhat-network-helpers": ~1.0.11
-    "@nomicfoundation/hardhat-verify": ~2.0.10
+    "@nomicfoundation/hardhat-verify": ~2.0.13
     "@openzeppelin/contracts": ~5.0.2
     "@typechain/ethers-v5": ~11.1.2
     "@typechain/ethers-v6": ~0.5.1
@@ -2518,7 +2518,7 @@ __metadata:
     eslint-plugin-prettier: ~5.2.1
     ethers: ~6.13.2
     hardhat: ~2.22.10
-    hardhat-deploy: ~0.12.4
+    hardhat-deploy: latest
     hardhat-deploy-ethers: ~0.4.2
     hardhat-gas-reporter: ~2.2.1
     prettier: ~3.3.3
@@ -3195,13 +3195,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: d92c1d3e77406bf13a03ec521b2ffb1ac99b2e6ea3a17cad670f2610f62e1293554c57e4074bb2fd4e9369f475f863b69e0ae8c543cb049c4a3c1b0c2d92522a
-  languageName: node
-  linkType: hard
-
-"@types/qs@npm:^6.9.7":
-  version: 6.9.18
-  resolution: "@types/qs@npm:6.9.18"
-  checksum: 152fab96efd819cc82ae67c39f089df415da6deddb48f1680edaaaa4e86a2a597de7b2ff0ad391df66d11a07006a08d52c9405e86b8cb8f3d5ba15881fe56cc7
   languageName: node
   linkType: hard
 
@@ -5146,7 +5139,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bn.js@npm:^4.11.0, bn.js@npm:^4.11.8, bn.js@npm:^4.11.9":
+"bn.js@npm:^4.11.0, bn.js@npm:^4.11.8":
+  version: 4.12.2
+  resolution: "bn.js@npm:4.12.2"
+  checksum: dd224afda6f5a7d15f2fe5154e1a1c245576a725584ea1852c8c42f9748dfe847bc63a48b2885360023389a24cfebb3653ca97f4c69742f3c22bc63da6565030
+  languageName: node
+  linkType: hard
+
+"bn.js@npm:^4.11.9":
   version: 4.12.1
   resolution: "bn.js@npm:4.12.1"
   checksum: f7f84a909bd07bdcc6777cccbf280b629540792e6965fb1dd1aeafba96e944f197ca10cbec2692f51e0a906ff31da1eb4317f3d1cd659d6f68b8bcd211f7ecbc
@@ -7768,9 +7768,9 @@ __metadata:
   linkType: hard
 
 "fast-uri@npm:^3.0.1":
-  version: 3.0.6
-  resolution: "fast-uri@npm:3.0.6"
-  checksum: 7161ba2a7944778d679ba8e5f00d6a2bb479a2142df0982f541d67be6c979b17808f7edbb0ce78161c85035974bde3fa52b5137df31da46c0828cb629ba67c4e
+  version: 3.1.0
+  resolution: "fast-uri@npm:3.1.0"
+  checksum: daab0efd3548cc53d0db38ecc764d125773f8bd70c34552ff21abdc6530f26fa4cb1771f944222ca5e61a0a1a85d01a104848ff88c61736de445d97bd616ea7e
   languageName: node
   linkType: hard
 
@@ -7808,6 +7808,18 @@ __metadata:
     picomatch:
       optional: true
   checksum: 79043610236579ffbd0647c508b43bd030a2d034a17c43cf96813a00e8e92e51acdb115c6ddecef3b5812cc2692b976155b4f6413e51e3761f1e772fa019a321
+  languageName: node
+  linkType: hard
+
+"fdir@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "fdir@npm:6.5.0"
+  peerDependencies:
+    picomatch: ^3 || ^4
+  peerDependenciesMeta:
+    picomatch:
+      optional: true
+  checksum: bd537daa9d3cd53887eed35efa0eab2dbb1ca408790e10e024120e7a36c6e9ae2b33710cb8381e35def01bc9c1d7eaba746f886338413e68ff6ebaee07b9a6e8
   languageName: node
   linkType: hard
 
@@ -7908,7 +7920,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.12.1, follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.6":
+"follow-redirects@npm:^1.12.1":
+  version: 1.15.11
+  resolution: "follow-redirects@npm:1.15.11"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 20bf55e9504f59e6cc3743ba27edb2ebf41edea1baab34799408f2c050f73f0c612728db21c691276296d2795ea8a812dc532a98e8793619fcab91abe06d017f
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.6":
   version: 1.15.9
   resolution: "follow-redirects@npm:1.15.9"
   peerDependenciesMeta:
@@ -8483,9 +8505,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hardhat-deploy@npm:~0.12.4":
-  version: 0.12.4
-  resolution: "hardhat-deploy@npm:0.12.4"
+"hardhat-deploy@npm:latest":
+  version: 1.0.4
+  resolution: "hardhat-deploy@npm:1.0.4"
   dependencies:
     "@ethersproject/abi": ^5.7.0
     "@ethersproject/abstract-signer": ^5.7.0
@@ -8498,7 +8520,6 @@ __metadata:
     "@ethersproject/solidity": ^5.7.0
     "@ethersproject/transactions": ^5.7.0
     "@ethersproject/wallet": ^5.7.0
-    "@types/qs": ^6.9.7
     axios: ^0.21.1
     chalk: ^4.1.2
     chokidar: ^3.5.2
@@ -8509,9 +8530,9 @@ __metadata:
     fs-extra: ^10.0.0
     match-all: ^1.2.6
     murmur-128: ^0.2.1
-    qs: ^6.9.4
+    neoqs: ^6.13.0
     zksync-ethers: ^5.0.0
-  checksum: 995a20a7ae8d10d2b961690e0903cd2a4a07198bc3d20a15d4734f2d9aade261b6f0ffb9e01b8fc013de34b687e401ed0c90dfc4d592571576f133ce8cbf3003
+  checksum: d91410a82b0a37c64eef235c4a8d457dee52ea67a67d4d9e32b710070d054e94defba5d60e034c6e10190e3c1c8183c36f576e83d88cfee539decd3dab801853
   languageName: node
   linkType: hard
 
@@ -10426,6 +10447,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"neoqs@npm:^6.13.0":
+  version: 6.13.0
+  resolution: "neoqs@npm:6.13.0"
+  checksum: 2b1ba202dbe839f80fae3065b08f3fdcb8993af720340ffd71a4136c5c084c81f691bcc04594e1547b1ff2562f458367427da7f4bcca0c6b8a8d214a329a377e
+  languageName: node
+  linkType: hard
+
 "next-nprogress-bar@npm:~2.3.13":
   version: 2.3.16
   resolution: "next-nprogress-bar@npm:2.3.16"
@@ -11229,6 +11257,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"picomatch@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "picomatch@npm:4.0.3"
+  checksum: 6817fb74eb745a71445debe1029768de55fd59a42b75606f478ee1d0dc1aa6e78b711d041a7c9d5550e042642029b7f373dc1a43b224c4b7f12d23436735dba0
+  languageName: node
+  linkType: hard
+
 "pidtree@npm:^0.6.0":
   version: 0.6.0
   resolution: "pidtree@npm:0.6.0"
@@ -11633,15 +11668,6 @@ __metadata:
   bin:
     qrcode: bin/qrcode
   checksum: 0a162822e12c02b0333315462fd4ccad22255002130f86806773be7592aec5ef295efaffa3eb148cbf00e290839c7b610f63b0d62a0c5efc5bc52a68f4189684
-  languageName: node
-  linkType: hard
-
-"qs@npm:^6.9.4":
-  version: 6.14.0
-  resolution: "qs@npm:6.14.0"
-  dependencies:
-    side-channel: ^1.1.0
-  checksum: 189b52ad4e9a0da1a16aff4c58b2a554a8dad9bd7e287c7da7446059b49ca2e33a49e570480e8be406b87fccebf134f51c373cbce36c8c83859efa0c9b71d635
   languageName: node
   linkType: hard
 
@@ -13291,13 +13317,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinyglobby@npm:^0.2.12, tinyglobby@npm:^0.2.13, tinyglobby@npm:^0.2.6":
+"tinyglobby@npm:^0.2.12, tinyglobby@npm:^0.2.13":
   version: 0.2.13
   resolution: "tinyglobby@npm:0.2.13"
   dependencies:
     fdir: ^6.4.4
     picomatch: ^4.0.2
   checksum: 3a2e87a2518cb3616057b0aa58be4f17771ae78c6890556516ae1e631f8ce4cfee1ba1dcb62fcc54a64e2bdd6c3104f4f3d021e1a3e3f8fb0875bca380b913e5
+  languageName: node
+  linkType: hard
+
+"tinyglobby@npm:^0.2.6":
+  version: 0.2.15
+  resolution: "tinyglobby@npm:0.2.15"
+  dependencies:
+    fdir: ^6.5.0
+    picomatch: ^4.0.3
+  checksum: 0e33b8babff966c6ab86e9b825a350a6a98a63700fa0bb7ae6cf36a7770a508892383adc272f7f9d17aaf46a9d622b455e775b9949a3f951eaaf5dfb26331d44
   languageName: node
   linkType: hard
 
